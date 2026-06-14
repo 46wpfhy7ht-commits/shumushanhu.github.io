@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>给最好的朋友的18岁 ❦</title>
 <style>
-:root{--cream:#E5DDD5;--paper:#DDD4CA;--dusty-rose:#B08086;--soft-green:#869B7E;--sepia:#AB8E65;--ink:#473324;--ink-light:#6A5948;--shadow-card:3px 4px 16px rgba(50,30,15,0.11)}
+@font-face{font-family:'PF';src:url('fonts/PF%E9%A2%91%E5%87%A1%E8%83%A1%E6%B6%82%E4%BD%93%20PFanHuTuTi%200.680.ttf') format('truetype');font-display:swap}
+:root{--cream:#E5DDD5;--paper:#DDD4CA;--dusty-rose:#B08086;--soft-green:#869B7E;--sepia:#AB8E65;--ink:#473324;--ink-light:#6A5948;--shadow-card:3px 4px 16px rgba(50,30,15,0.11);--font:'PF','Microsoft YaHei',cursive}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:18px}
-body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden;min-height:100vh}
+body{font-family:var(--font);color:var(--ink);background:var(--cream);overflow-x:hidden;min-height:100vh}
 body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(110,95,70,0.01) 3px,rgba(110,95,70,0.01) 5px),repeating-linear-gradient(90deg,transparent,transparent 2px,rgba(110,95,70,0.007) 2px,rgba(110,95,70,0.007) 4px)}
 .bg-grid{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2;pointer-events:none;background-image:linear-gradient(rgba(140,150,140,0.12) 1px,transparent 1px),linear-gradient(90deg,rgba(140,150,140,0.12) 1px,transparent 1px);background-size:20px 20px}
 section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
@@ -46,10 +47,7 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
 </section>
 
 <div class="torn"></div>
-
-<!-- ALL content rendered by JS -->
 <div id="content"></div>
-
 <div class="torn"></div>
 
 <section style="text-align:center;padding:60px 30px">
@@ -120,11 +118,9 @@ const PAGES = [
 {d:"26.4.24-26.5.21",m:"flower_521",i:["media/26.4.24-26.5.21/flower_521/IMG_8123.HEIC", "media/26.4.24-26.5.21/flower_521/IMG_8153.HEIC", "media/26.4.24-26.5.21/flower_521/IMG_8158.HEIC"],v:[],t:"我那天拿上花特别幸福呀，有人惦记真好。"},
 {d:"26.4.24-26.5.21",m:"vc",i:["media/26.4.24-26.5.21/vc/image_b0d0d139e63fc96ef1c384b017e558b9.jpeg", "media/26.4.24-26.5.21/vc/image_cc03b31afd0b63e271a9a4f30f1eec98.jpeg"],v:[],t:""},
 ];
-
 (function(){
   var h="",ld="",ti=0;
   PAGES.forEach(function(p){
-    // CLOSE previous section before opening new date folder section
     if(p.d!==ld){
       if(ld) h+='</section><div class="torn"></div>';
       h+='<section style="background:'+TONES[ti%TONES.length]+'"><div class="chapter-head"><div class="num">· '+p.d+' ·</div><h2>'+p.d+'</h2></div>';
@@ -138,16 +134,15 @@ const PAGES = [
       });
       h+='</div>';
     }
-    // Show ALL 48 texts - use default for missing ones
     h+='<div class="memory-text">'+(p.t||'关于 「'+p.m+'」 的回忆…')+'</div>';
     if(p.v.length>0){
       h+='<div class="folder-label">▸ '+p.m+' · 视频</div>';
       p.v.forEach(function(v){
-        h+='<div class="video-wrap"><video src="'+v+'" controls preload="none" playsinline poster=""></video></div>';
+        h+='<div class="video-wrap"><video src="'+v+'" controls preload="none" playsinline></video></div>';
       });
     }
   });
-  h+='</section>'; // close last section
+  h+='</section>';
   document.getElementById('content').innerHTML=h;
 })();
 
@@ -159,14 +154,6 @@ document.addEventListener('click',function(e){
 document.getElementById('mc').onclick=function(){modal.classList.remove('on')};
 modal.onclick=function(e){if(e.target===modal)modal.classList.remove('on')};
 document.onkeydown=function(e){if(e.key==='Escape')modal.classList.remove('on')};
-
-// Async font
-setTimeout(function(){
-  var s=document.createElement('style');
-  s.textContent="@font-face{font-family:'PF';src:url('fonts/PF%E9%A2%91%E5%87%A1%E8%83%A1%E6%B6%82%E4%BD%93%20PFanHuTuTi%200.680.ttf') format('truetype');font-display:swap}";
-  document.head.appendChild(s);
-  s.onload=function(){document.body.classList.add('pf')};
-},500);
 </script>
 </body>
 </html>
