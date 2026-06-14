@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>给最好的朋友的18岁 ❦</title>
+<style>
+@font-face{font-family:'PF频凡胡涂体';src:url('fonts/PF频凡胡涂体 PFanHuTuTi 0.680.ttf') format('truetype');font-display:swap}
+:root{
+  --cream:#E5DDD5;--paper:#DDD4CA;--paper-dark:#D4C9BD;
+  --dusty-rose:#B08086;--dusty-rose-light:#D4B4B8;
+  --soft-green:#869B7E;--soft-green-light:#A4B69D;
+  --sepia:#AB8E65;--sepia-light:#C4B8A0;
+  --ink:#473324;--ink-light:#6A5948;
+  --shadow-soft:2px 3px 12px rgba(50,30,15,0.08);
+  --shadow-card:3px 4px 16px rgba(50,30,15,0.11);
+  --font-cn:'PF频凡胡涂体',cursive;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:18px}
+body{font-family:var(--font-cn);color:var(--ink);background:var(--cream);overflow-x:hidden;min-height:100vh;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-index:-4;background:var(--cream)}
+body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-index:-3;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(110,95,70,0.01) 3px,rgba(110,95,70,0.01) 5px),repeating-linear-gradient(90deg,transparent,transparent 2px,rgba(110,95,70,0.007) 2px,rgba(110,95,70,0.007) 4px);pointer-events:none}
+.bg-grid{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2;pointer-events:none;background-image:linear-gradient(rgba(140,150,140,0.12) 1px,transparent 1px),linear-gradient(90deg,rgba(140,150,140,0.12) 1px,transparent 1px);background-size:20px 20px}
+.noise{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px 180px}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease-out,transform .7s ease-out}
+.reveal.visible{opacity:1;transform:translateY(0)}
+section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
+.cover{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 30px;max-width:none}
+.cover h1{font-size:clamp(42px,5.5vw,70px);font-weight:700;color:var(--ink);line-height:1.25}
+.cover h1 .small{font-size:.48em;font-weight:400;display:block;margin-bottom:6px;color:var(--ink-light)}
+.cover h1 .highlight{color:var(--dusty-rose)}.cover h1 .accent{color:var(--soft-green)}
+.cover .sub{font-size:clamp(16px,2vw,22px);color:var(--sepia);margin-top:10px}
+.chapter-head{text-align:center;margin-bottom:28px;padding-top:20px;position:relative;z-index:1}
+.chapter-head .num{font-size:13px;color:var(--dusty-rose);letter-spacing:4px}
+.chapter-head h2{font-size:clamp(30px,4vw,48px);font-weight:600;color:var(--ink);margin-top:2px}
+.torn{height:24px;position:relative;z-index:2;margin:-6px 0;-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 28' preserveAspectRatio='none'%3E%3Cpath d='M0,14 Q35,2 70,16 T140,7 T210,20 T280,4 T350,17 T420,10 T490,22 T560,5 T630,18 T700,11 T770,20 T840,8 T910,19 T980,6 T1050,21 T1120,9 T1200,15 L1200,0 L0,0 Z' fill='black'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 28' preserveAspectRatio='none'%3E%3Cpath d='M0,14 Q35,2 70,16 T140,7 T210,20 T280,4 T350,17 T420,10 T490,22 T560,5 T630,18 T700,11 T770,20 T840,8 T910,19 T980,6 T1050,21 T1120,9 T1200,15 L1200,0 L0,0 Z' fill='black'/%3E%3C/svg%3E");-webkit-mask-size:100% 100%;mask-size:100% 100%}
+.bg-note{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.16;background-size:cover;background-position:center;background-repeat:no-repeat}
+
+/* Photo card — 150% size */
+.photo-card{background:#FDFCF7;padding:8px 8px 34px 8px;box-shadow:var(--shadow-card);display:inline-block;position:relative;z-index:1;transform:rotate(var(--tilt,-1deg));transition:transform .35s,box-shadow .35s;cursor:pointer;max-width:310px}
+.photo-card:hover{transform:rotate(0deg) scale(1.05);box-shadow:4px 8px 24px rgba(50,30,15,0.16);z-index:5}
+.photo-card img{display:block;width:100%;height:auto;filter:sepia(.16) brightness(.93) contrast(1.05) saturate(.86);transition:filter .35s}
+.photo-card:hover img{filter:sepia(.05) brightness(.98) contrast(1.01) saturate(.94)}
+.photo-corners::before,.photo-corners::after{content:'';position:absolute;width:14px;height:14px;border-color:rgba(160,130,110,.42);border-style:solid;z-index:3;pointer-events:none}
+.photo-corners::before{top:-3px;left:-3px;border-width:2px 0 0 2px}
+.photo-corners::after{bottom:-3px;right:-3px;border-width:0 2px 2px 0}
+.photo-tape{position:absolute;top:-10px;z-index:4;height:22px;opacity:.55;border-radius:1px;pointer-events:none}
+.photo-card:nth-child(5n+1){--tilt:-1.5deg}.photo-card:nth-child(5n+2){--tilt:2.2deg}.photo-card:nth-child(5n+3){--tilt:-.5deg}.photo-card:nth-child(5n+4){--tilt:2.8deg}.photo-card:nth-child(5n+5){--tilt:-2deg}
+
+/* Clips & Pins */
+.photo-clip{position:absolute;z-index:10;pointer-events:none;left:50%;top:1px;transform:translate(-50%,-50%) rotate(var(--clip-rotate,0deg));width:var(--clip-width,80px);min-width:60px;height:auto;filter:drop-shadow(2px 3px 5px rgba(0,0,0,0.2));transition:transform .35s}
+.photo-card:hover .photo-clip{transform:translate(-50%,-50%) rotate(0deg) scale(1.05)}
+.photo-pin{position:absolute;z-index:10;pointer-events:none;width:var(--pin-width,45px);min-width:25px;height:auto;filter:drop-shadow(2px 3px 5px rgba(0,0,0,0.22));transition:transform .35s}
+.photo-pin.pin-tl{top:1px;left:1px;transform:translate(-40%,-40%) rotate(var(--pin-rotate,35deg));transform-origin:center}
+.photo-pin.pin-tr{top:1px;right:1px;transform:translate(40%,-40%) rotate(var(--pin-rotate,-35deg));transform-origin:center}
+.photo-card:hover .photo-pin{transform:translate(0,0) scale(1.1)}
+
+.collage{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:center;gap:12px;padding:10px 0;position:relative;z-index:1}
+.video-wrap{position:relative;z-index:1;max-width:800px;margin:14px auto;text-align:center;border-radius:4px;overflow:hidden;box-shadow:var(--shadow-card)}
+.video-wrap video{display:block;width:100%;height:auto;max-height:65vh}
+.memory-text{max-width:700px;margin:20px auto;padding:18px 24px;font-size:clamp(15px,2vw,19px);line-height:1.8;color:var(--ink);text-align:center;position:relative;z-index:1;background:rgba(253,251,245,.45);border-radius:4px;box-shadow:var(--shadow-soft)}
+.folder-label{text-align:center;margin-bottom:12px;font-size:15px;color:var(--sepia);letter-spacing:1px;position:relative;z-index:1}
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(25,15,8,.9);z-index:999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-overlay.active{opacity:1;pointer-events:all}
+.modal-overlay img{max-width:78vw;max-height:85vh;box-shadow:0 12px 48px rgba(0,0,0,.5);background:#fff;padding:9px 9px 36px 9px;filter:sepia(.05) brightness(.96) contrast(1.02)}
+.modal-close{position:absolute;top:18px;right:28px;font-size:44px;color:#fff;cursor:pointer;z-index:1000;opacity:.8}
+@media(max-width:768px){html{font-size:16px}section{padding:30px 14px 40px}.photo-card{max-width:200px;padding:6px 6px 26px 6px}}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="noise"></div>
+
+<section class="cover reveal">
+  <h1><span class="small">给我最好的朋友</span><span class="highlight">18</span>岁的<span class="accent">回忆录</span></h1>
+  <p class="sub">一部关于我们的田园手账</p>
+</section>
+
+<div class="torn" style="background:var(--paper);"></div>
+<div id="content"></div>
+<div class="torn" style="background:var(--paper-dark);"></div>
+
+<section style="text-align:center;padding:60px 30px" class="reveal">
+  <h2 style="font-size:clamp(32px,4vw,50px);color:var(--dusty-rose)">生日快乐</h2>
+  <p style="font-size:clamp(18px,2vw,24px);color:var(--ink);margin-top:8px">给18岁的你</p>
+  <div style="max-width:700px;margin:24px auto;padding:30px 24px;background:#FFFEF7;background-image:repeating-linear-gradient(0deg,transparent,transparent 32px,rgba(130,150,170,.12) 32px,rgba(130,150,170,.12) 33px);box-shadow:inset 36px 0 0 0 rgba(200,165,155,.06),3px 4px 18px rgba(50,35,20,.1);line-height:34px;font-size:clamp(17px,2vw,22px);text-align:left;text-indent:1.5em">
+    <p>亲爱的朋友，</p><p style="margin-top:6px">恭喜你，今天18岁了。</p>
+    <p style="margin-top:6px">翻看这本手账，才发现我们从那么小的时候就已经在彼此的生命里了。从2013到2026，十几年的时光，满满当当全是我们在一起的笑声、眼泪、和那些只有我们才懂的梗。</p>
+    <p style="margin-top:6px">18岁，是人生最美好的开始。愿你永远像现在这样温柔又勇敢，愿你遇到的人都善良，愿你的每一个梦想都开花。</p>
+    <p style="margin-top:6px">而我，会一直在。就像过去的每一年一样。</p>
+    <p style="margin-top:6px">生日快乐，我最好的朋友。我爱你。❤</p>
+    <p style="text-align:right;margin-top:20px;text-indent:0">—— 你最久的朋友</p>
+  </div>
+  <p style="font-size:20px;color:var(--sepia);margin-top:20px">2013 — 2026 · Forever</p>
+</section>
+
+<div class="modal-overlay" id="modal"><span class="modal-close" id="modalClose">&times;</span><img id="modalImg" src=""></div>
+
+<script>
+const BG_FILES=["1 (1).png","1 (2).png","1 (3).png","1 (4).png","1 (5).png","1 (6).png","1 (7).png","1 (9).png","1 (10).png","1 (11).png","1 (12).png","1 (13).png","7_1 (4).png","7_1 (5).png","11_1 (2).png","11_1 (3).png","11_1 (4).png","11_1 (5).png","11_1 (7).png","11_1 (8).png"];
+function rb(){return BG_FILES[Math.floor(Math.random()*BG_FILES.length)]}
+const TONES=["linear-gradient(180deg,#E5DDD5 0%,#DDD4CA 100%)","linear-gradient(180deg,#E5DDD5 0%,#E8DED2 100%)","linear-gradient(180deg,#E3D9CF 0%,#E5DDD5 100%)","linear-gradient(180deg,#E5DDD5 0%,#E0D8C8 100%)","linear-gradient(180deg,#E6DFD8 0%,#DED5C9 100%)","linear-gradient(180deg,#E5DDD5 0%,#DFD5C8 100%)","linear-gradient(180deg,#E2D9CD 0%,#E5DDD5 100%)"];
+const TAPE=[["rgba(190,135,140,.45)","rgba(130,150,120,.42)","rgba(200,175,130,.45)","rgba(170,135,98,.43)"],["rgba(185,130,135,.48)","rgba(125,145,115,.40)","rgba(195,170,125,.48)","rgba(165,130,93,.46)"]];
+const XIAOJIAZI=[1,2,4,10,12,14,16,17,19,20,21,22,24,25,26,27,34,35,36,46,53,55];
+const QUBIEZHEN=[9,18,30,37,40,41,44,45,48,50,51,52,54];
+
+const PAGES = [
+{d:"21.12.19-22.12.11",m:"(根)",i:["media/21.12.19-22.12.11/b_group_pageant.PNG", "media/21.12.19-22.12.11/first_photo_after_middle_school_exam.HEIC"],v:[],t:""},
+{d:"21.12.19-22.12.11",m:"hospital_visit",i:["media/21.12.19-22.12.11/hospital_visit/IMG_5201.JPG", "media/21.12.19-22.12.11/hospital_visit/IMG_5203.JPG"],v:["media/21.12.19-22.12.11/hospital_visit/IMG_5196.MOV"],t:""},
+{d:"21.12.19-22.12.11",m:"kunming_haidilao",i:["media/21.12.19-22.12.11/kunming_haidilao/IMG_1261.HEIC"],v:["media/21.12.19-22.12.11/kunming_haidilao/IMG_1265.MOV"],t:""},
+{d:"21.12.19-22.12.11",m:"vc",i:["media/21.12.19-22.12.11/vc/IMG_0530.PNG", "media/21.12.19-22.12.11/vc/IMG_1029.PNG", "media/21.12.19-22.12.11/vc/first_breakup_vc.PNG"],v:[],t:""},
+{d:"21.7.25-21.11.26",m:"first_home_visit",i:["media/21.7.25-21.11.26/first_home_visit/IMG_4658.JPG"],v:["media/21.7.25-21.11.26/first_home_visit/IMG_2752.MOV"],t:"这应该是我第一次去你家，找到了我俩的人生曲目《全是爱》。我俩也确实像这首歌的题目一样，给彼此的全部都是爱。你存在，我的心里就全是爱。"},
+{d:"21.7.25-21.11.26",m:"playboy_mv",i:["media/21.7.25-21.11.26/playboy_mv/IMG_2842.HEIC"],v:["media/21.7.25-21.11.26/playboy_mv/IMG_2851.MOV", "media/21.7.25-21.11.26/playboy_mv/IMG_2860.MOV"],t:""},
+{d:"23.1.13-23.5.3",m:"bgroup_cc_hangout",i:["media/23.1.13-23.5.3/bgroup_cc_hangout/IMG_6856.JPG", "media/23.1.13-23.5.3/bgroup_cc_hangout/IMG_6862.JPG"],v:[],t:"高一上我们四个每天真的玩美了，每天都在微信上使劲聊天，天天打电话。解封和你们见面那天好开心好开心。"},
+{d:"23.1.13-23.5.3",m:"post_lockdown_trip",i:["media/23.1.13-23.5.3/post_lockdown_trip/IMG_6758.JPG", "media/23.1.13-23.5.3/post_lockdown_trip/IMG_6771.JPG", "media/23.1.13-23.5.3/post_lockdown_trip/IMG_6774.JPG", "media/23.1.13-23.5.3/post_lockdown_trip/IMG_6793.JPG", "media/23.1.13-23.5.3/post_lockdown_trip/IMG_6798.JPG", "media/23.1.13-23.5.3/post_lockdown_trip/IMG_6800.JPG"],v:["media/23.1.13-23.5.3/post_lockdown_trip/80967_raw.mp4", "media/23.1.13-23.5.3/post_lockdown_trip/IMG_6772.MOV"],t:""},
+{d:"23.1.13-23.5.3",m:"vc",i:["media/23.1.13-23.5.3/vc/IMG_8178.PNG", "media/23.1.13-23.5.3/vc/IMG_8180.PNG", "media/23.1.13-23.5.3/vc/IMG_8183.PNG", "media/23.1.13-23.5.3/vc/IMG_8185.PNG"],v:[],t:""},
+{d:"23.5.7-23.5.11",m:"btez_open_day",i:["media/23.5.7-23.5.11/btez_open_day/2d35bc282e42cd41c4cc0ee4ef495dab.jpg", "media/23.5.7-23.5.11/btez_open_day/9599e952f57158e31655dfd96352f927.jpg", "media/23.5.7-23.5.11/btez_open_day/IMG_9456.HEIC", "media/23.5.7-23.5.11/btez_open_day/IMG_9482.HEIC"],v:["media/23.5.7-23.5.11/btez_open_day/4968.mp4"],t:""},
+{d:"23.5.7-23.5.11",m:"first_ktv",i:[],v:["media/23.5.7-23.5.11/first_ktv/IMG_8880.MOV", "media/23.5.7-23.5.11/first_ktv/IMG_8881.MOV"],t:""},
+{d:"23.5.7-23.5.11",m:"no1school_fitness_exam",i:["media/23.5.7-23.5.11/no1school_fitness_exam/31a9a0cb853e15b072955565617a5d29.jpg", "media/23.5.7-23.5.11/no1school_fitness_exam/IMG_8210.HEIC", "media/23.5.7-23.5.11/no1school_fitness_exam/IMG_8225.HEIC"],v:[],t:""},
+{d:"23.5.7-23.5.11",m:"spiderman",i:["media/23.5.7-23.5.11/spiderman/image_7a73e8d9d9dfaf718db82cb0d5bed727.JPG", "media/23.5.7-23.5.11/spiderman/selfie.HEIC"],v:[],t:""},
+{d:"23.5.7-23.5.11",m:"yaya_middle_school_exam_cheerup",i:["media/23.5.7-23.5.11/yaya_middle_school_exam_cheerup/IMG_8676.HEIC", "media/23.5.7-23.5.11/yaya_middle_school_exam_cheerup/IMG_8677.HEIC", "media/23.5.7-23.5.11/yaya_middle_school_exam_cheerup/da990a7e2614909c524939b964c20b98.jpg"],v:[],t:""},
+{d:"23.7.19-23.8.4",m:"b_group_pizza_reunion",i:["media/23.7.19-23.8.4/b_group_pizza_reunion/1bde79dfb785dccfcbd292e6315799ef.jpg", "media/23.7.19-23.8.4/b_group_pizza_reunion/77a2db2abd6afd0bb2d7b43ba2d106d7.jpg", "media/23.7.19-23.8.4/b_group_pizza_reunion/IMG_4450.JPG", "media/23.7.19-23.8.4/b_group_pizza_reunion/IMG_9770.HEIC", "media/23.7.19-23.8.4/b_group_pizza_reunion/f4476cc99093cf66cebbbf7be34b9a11.jpg"],v:["media/23.7.19-23.8.4/b_group_pizza_reunion/104761.mp4"],t:"四个人在时间的河流刻舟求剑，还专门去一趟必胜客，其实我第一次有印象的吃必胜客就是小学和你们吃的那次（因为我妈说我很小的时候她带我吃过，可我一点记忆都没有）"},
+{d:"23.7.19-23.8.4",m:"waitan_bbq",i:["media/23.7.19-23.8.4/waitan_bbq/2e648b556831b561fd81626ac6631d1b.jpg", "media/23.7.19-23.8.4/waitan_bbq/438a8b4c1379f0b98dd1b549fdb1037f.jpg", "media/23.7.19-23.8.4/waitan_bbq/IMG_9836.HEIC"],v:["media/23.7.19-23.8.4/waitan_bbq/live_selfie.mp4"],t:""},
+{d:"23.7.19-23.8.4",m:"xinfuroad",i:["media/23.7.19-23.8.4/xinfuroad/IMG_0650.HEIC", "media/23.7.19-23.8.4/xinfuroad/IMG_0660.HEIC"],v:["media/23.7.19-23.8.4/xinfuroad/IMG_0649.MOV"],t:""},
+{d:"23.9.3",m:"music_festival",i:["media/23.9.3/music_festival/IMG_1419.HEIC", "media/23.9.3/music_festival/IMG_6093.HEIC", "media/23.9.3/music_festival/IMG_6111.HEIC", "media/23.9.3/music_festival/IMG_6112.HEIC", "media/23.9.3/music_festival/IMG_6134.HEIC", "media/23.9.3/music_festival/IMG_6139.HEIC", "media/23.9.3/music_festival/IMG_6144.HEIC", "media/23.9.3/music_festival/IMG_6154.HEIC", "media/23.9.3/music_festival/IMG_6175.HEIC", "media/23.9.3/music_festival/IMG_6211.heic", "media/23.9.3/music_festival/IMG_6217.heic", "media/23.9.3/music_festival/IMG_6226.heic", "media/23.9.3/music_festival/IMG_6232.heic", "media/23.9.3/music_festival/IMG_6252.heic", "media/23.9.3/music_festival/IMG_6255.heic", "media/23.9.3/music_festival/IMG_6262.heic", "media/23.9.3/music_festival/IMG_6275.heic", "media/23.9.3/music_festival/IMG_6279.heic", "media/23.9.3/music_festival/IMG_6445.heic", "media/23.9.3/music_festival/IMG_6552.heic", "media/23.9.3/music_festival/ccdr 2023-09-02 211107.878.heic", "media/23.9.3/music_festival/ccdr 2023-09-02 211406.690.heic", "media/23.9.3/music_festival/ccdr 2023-09-02 211858.137.heic", "media/23.9.3/music_festival/ccdr 2023-09-02 213630.946.heic", "media/23.9.3/music_festival/ccdr 2023-09-02 213804.709.heic", "media/23.9.3/music_festival/ccdr 2023-09-02 214548.044.heic"],v:["media/23.9.3/music_festival/110132.mp4", "media/23.9.3/music_festival/IMG_6186.MOV"],t:"我第一次看音乐节。这一天太幸福了，我整个高中都在回忆这一天。我请了半天的假，没有考下午的数学考试。从天亮闹到天黑，还偶遇了陈俞霏。我们拍了一百万张特别垃圾的照片，张年年一直在我们旁边闹。你知道吗，那天我最幸福的时刻不是看到凤凰传奇出来唱歌，是他们上台的时候你尖叫往前跑，我在后面看着你我感觉我心里的幸福快溢出来了。人在很多瞬间是有预感的，预感这一两秒自己会记住一辈子，那一秒就是。"},
+{d:"23.9.30",m:"no1school_visit",i:["media/23.9.30/no1school_visit/43d07b2e7495402a9ce93e5d454725cd.jpg", "media/23.9.30/no1school_visit/IMG_2090.HEIC", "media/23.9.30/no1school_visit/IMG_2091.HEIC", "media/23.9.30/no1school_visit/IMG_2101.HEIC", "media/23.9.30/no1school_visit/IMG_2102.HEIC", "media/23.9.30/no1school_visit/IMG_2104.HEIC", "media/23.9.30/no1school_visit/IMG_2107.JPG", "media/23.9.30/no1school_visit/aba4aba2fac6d27b2dd06f73b0397376.jpg", "media/23.9.30/no1school_visit/c477f06bd934dfadc5ca78df981febf8.jpg"],v:["media/23.9.30/no1school_visit/IMG_2088.MOV"],t:"其实我都忘了我为啥那天那么想去一中玩，但是那天发生了两件影响深刻的事：1.我和樊镇熠世纪会面 2.王伟坤觉醒英雄母亲人格"},
+{d:"24.2.8",m:"gossip_paper",i:["media/24.2.8/gossip_paper/733023163dc322a1a729bdb0419000aa.jpg", "media/24.2.8/gossip_paper/IMG_4661.HEIC", "media/24.2.8/gossip_paper/IMG_5799.HEIC", "media/24.2.8/gossip_paper/IMG_5800.HEIC", "media/24.2.8/gossip_paper/IMG_7376.HEIC", "media/24.2.8/gossip_paper/IMG_7379.heic", "media/24.2.8/gossip_paper/fbccca5a1296ac9350ef5a0585d9efcf.jpg"],v:["media/24.2.8/gossip_paper/66c9cbb08339ed4deabb207c228f9983_decrypted.mp4"],t:"拿了个大A3纸就开始写！乌鲁木齐是世界上最小的城市。三个人那天把八卦聊的呀。"},
+{d:"24.4.3-24.5.4",m:"first_foot_spa_day",i:["media/24.4.3-24.5.4/first_foot_spa_day/IMG_2989.JPG", "media/24.4.3-24.5.4/first_foot_spa_day/IMG_3003.HEIC", "media/24.4.3-24.5.4/first_foot_spa_day/IMG_3009.HEIC", "media/24.4.3-24.5.4/first_foot_spa_day/IMG_3011.HEIC", "media/24.4.3-24.5.4/first_foot_spa_day/IMG_3045.HEIC", "media/24.4.3-24.5.4/first_foot_spa_day/IMG_3066.HEIC", "media/24.4.3-24.5.4/first_foot_spa_day/IMG_7891.HEIC", "media/24.4.3-24.5.4/first_foot_spa_day/IMG_7893.HEIC", "media/24.4.3-24.5.4/first_foot_spa_day/IMG_7898.HEIC"],v:[],t:"这个是我第一次去足疗店，又丰富了人生体验。那天也是看亚比囧囧囧，和牙牙吃的那个面包咖喱牛腩，真的特别好吃。"},
+{d:"24.4.3-24.5.4",m:"first_meeting_fzy",i:["media/24.4.3-24.5.4/first_meeting_fzy/IMG_7292.JPG", "media/24.4.3-24.5.4/first_meeting_fzy/d9ad25cda88d42efd76e2820c697e5e5.jpg"],v:[],t:""},
+{d:"24.6.8-24.7.5",m:"first_wwkshutup_group_meetup",i:["media/24.6.8-24.7.5/first_wwkshutup_group_meetup/787032f47c247781175cf6a54e945904.jpg", "media/24.6.8-24.7.5/first_wwkshutup_group_meetup/IMG_8985.HEIC", "media/24.6.8-24.7.5/first_wwkshutup_group_meetup/a1daaf1db4764124f0346c0107f9dcf3.jpg"],v:[],t:"叔叔这个熟了吗？叔叔你怎么走了。把你桌洞里的东西拿出来！"},
+{d:"24.6.8-24.7.5",m:"yaya_17th_birthday",i:["media/24.6.8-24.7.5/yaya_17th_birthday/IMG_8562.HEIC", "media/24.6.8-24.7.5/yaya_17th_birthday/IMG_8608.HEIC"],v:[],t:""},
+{d:"25.1.19",m:"senior_hotpot_onlymeet",i:["media/25.1.19/senior_hotpot_onlymeet/IMG_1607.HEIC"],v:["media/25.1.19/senior_hotpot_onlymeet/IMG_1603.MOV"],t:"这是我们俩高三唯一一次线下见面，我太想念你了。我们那天聊了很多，我一直以为我们不能更亲近了，那天晚上过去后我发现居然还可以更亲密。李洁榕你太美好了，我那天又在感激命运让我们相遇，感谢我们从来不放开彼此的手。"},
+{d:"25.5.24",m:"last_video_call_before_Gaokao",i:["media/25.5.24/last_video_call_before_Gaokao/IMG_2708.JPEG"],v:["media/25.5.24/last_video_call_before_Gaokao/IMG_2708.MOV"],t:"我对高考完全不慌，可我就是迫切地想和你说话，好像只有和你说话才能让我平静。我们俩那天聊了啥我也不记得了（是不是王伟坤被打了），我就记得电话挂了以后我心里有底了，是一种平静的力量吧。"},
+{d:"25.6.16",m:"ur_18th_birthday_celebration",i:["media/25.6.16/ur_18th_birthday_celebration/00d998327e578419bcbf0d9c178652c6.jpg", "media/25.6.16/ur_18th_birthday_celebration/0863d52265480aea3ed44b52b76bfb34.jpg", "media/25.6.16/ur_18th_birthday_celebration/1d78f4ffcb7b3ada5cf91757fc26b2c5.jpg", "media/25.6.16/ur_18th_birthday_celebration/653d8f20859af31ce4ac9aaa38ff8833.jpg", "media/25.6.16/ur_18th_birthday_celebration/8e16a3e2e08c81a1a337f1e0934980d3.jpg", "media/25.6.16/ur_18th_birthday_celebration/IMG_3224.HEIC", "media/25.6.16/ur_18th_birthday_celebration/IMG_3285.HEIC", "media/25.6.16/ur_18th_birthday_celebration/IMG_3287.HEIC", "media/25.6.16/ur_18th_birthday_celebration/IMG_7395.JPG", "media/25.6.16/ur_18th_birthday_celebration/IMG_7396.JPG", "media/25.6.16/ur_18th_birthday_celebration/IMG_7406.JPG", "media/25.6.16/ur_18th_birthday_celebration/IMG_7413.JPEG", "media/25.6.16/ur_18th_birthday_celebration/b38e7999a013fa24608df19e7eac4457.jpg", "media/25.6.16/ur_18th_birthday_celebration/bd2a7a5aac19352c78f3a9280363d4e6.jpg", "media/25.6.16/ur_18th_birthday_celebration/c967091b469081a3882c6c264b2b796d.jpg", "media/25.6.16/ur_18th_birthday_celebration/d707d52790d6fe472775c4ce7da04ffb.jpg"],v:[],t:"这么重要的日子我居然睡过了，我真的不知道为什么。而且我也没给你送生日礼物，我们两个好像全都忘了，，，但没事我这次给你憋了个大的！那天轻松熊的蛋糕真的好好吃，拍了好多漂亮的拍立得。"},
+{d:"25.6.20-25.8.26",m:"Tsinghua_admission_letter",i:["media/25.6.20-25.8.26/Tsinghua_admission_letter/IMG_5890.HEIC"],v:[],t:"这天太可笑了，我最开始不知道王伟坤真的把录取通知书带过来给我俩拍照玩了，然后我俩走的时候你还打了个无敌商务车，真的好搞笑，最后抖音疑似找到流量密码，成为历史高赞视频？"},
+{d:"25.6.20-25.8.26",m:"first_makeup",i:["media/25.6.20-25.8.26/first_makeup/IMG_3745.HEIC", "media/25.6.20-25.8.26/first_makeup/IMG_5269.JPG"],v:[],t:""},
+{d:"25.6.20-25.8.26",m:"rose_garden_dinner",i:[],v:["media/25.6.20-25.8.26/rose_garden_dinner/b8982176e4f04eca9098c60ffdd82fca.mov", "media/25.6.20-25.8.26/rose_garden_dinner/db95eb4156144f568ff990e19a2cf2d2.mov"],t:""},
+{d:"25.6.20-25.8.26",m:"tfsingers_summer_vacation",i:["media/25.6.20-25.8.26/tfsingers_summer_vacation/IMG_3372.HEIC", "media/25.6.20-25.8.26/tfsingers_summer_vacation/IMG_3373.HEIC", "media/25.6.20-25.8.26/tfsingers_summer_vacation/IMG_3374.HEIC", "media/25.6.20-25.8.26/tfsingers_summer_vacation/IMG_3397.HEIC", "media/25.6.20-25.8.26/tfsingers_summer_vacation/IMG_6556.HEIC"],v:["media/25.6.20-25.8.26/tfsingers_summer_vacation/IMG_3549.MOV", "media/25.6.20-25.8.26/tfsingers_summer_vacation/IMG_6543_live.MOV", "media/25.6.20-25.8.26/tfsingers_summer_vacation/aiyaaiya.mov", "media/25.6.20-25.8.26/tfsingers_summer_vacation/bangbangbang.MOV", "media/25.6.20-25.8.26/tfsingers_summer_vacation/like_jennie.MOV"],t:""},
+{d:"25.6.8-25.6.12",m:"coming_of_age",i:["media/25.6.8-25.6.12/coming_of_age/IMG_2972.HEIC", "media/25.6.8-25.6.12/coming_of_age/IMG_2979.HEIC", "media/25.6.8-25.6.12/coming_of_age/IMG_2988.HEIC", "media/25.6.8-25.6.12/coming_of_age/IMG_3011.HEIC"],v:["media/25.6.8-25.6.12/coming_of_age/IMG_3015_live.MOV"],t:"谢谢你能来我的成人礼，你又见证了我一个重要时刻。那天见到了好多好多一中的人，你是那个我最想见的女孩。"},
+{d:"25.6.8-25.6.12",m:"second_wwkshutup_group_meetup",i:["media/25.6.8-25.6.12/second_wwkshutup_group_meetup/IMG_2653.HEIC", "media/25.6.8-25.6.12/second_wwkshutup_group_meetup/IMG_3076.JPG", "media/25.6.8-25.6.12/second_wwkshutup_group_meetup/IMG_3090.HEIC", "media/25.6.8-25.6.12/second_wwkshutup_group_meetup/IMG_3109.HEIC", "media/25.6.8-25.6.12/second_wwkshutup_group_meetup/IMG_3133.HEIC"],v:["media/25.6.8-25.6.12/second_wwkshutup_group_meetup/IMG_3071_live.MOV", "media/25.6.8-25.6.12/second_wwkshutup_group_meetup/IMG_3083_live.MOV", "media/25.6.8-25.6.12/second_wwkshutup_group_meetup/IMG_3087_live.MOV"],t:""},
+{d:"25.6.8-25.6.12",m:"yaya_18th_birthday",i:["media/25.6.8-25.6.12/yaya_18th_birthday/IMG_2167.HEIC", "media/25.6.8-25.6.12/yaya_18th_birthday/IMG_2174.HEIC", "media/25.6.8-25.6.12/yaya_18th_birthday/IMG_2178.HEIC", "media/25.6.8-25.6.12/yaya_18th_birthday/IMG_2179.HEIC", "media/25.6.8-25.6.12/yaya_18th_birthday/IMG_2744.HEIC"],v:["media/25.6.8-25.6.12/yaya_18th_birthday/IMG_2164_live.MOV", "media/25.6.8-25.6.12/yaya_18th_birthday/IMG_2166_live.MOV"],t:""},
+{d:"26.1.13-26.1.17",m:"(根)",i:["media/26.1.13-26.1.17/third_breakup.PNG"],v:[],t:"这是你第三次分手了，流程我已经很熟悉了，所以这次我并没有像第一次那么慌张，慢慢就走出来了，不急。"},
+{d:"26.1.13-26.1.17",m:"vc",i:["media/26.1.13-26.1.17/vc/09e2d45f7beff8af43a0e9a9c5963219.jpg", "media/26.1.13-26.1.17/vc/0da324d5f6d6a027747de5e25926c154.jpg", "media/26.1.13-26.1.17/vc/167a343d77cdeb8b00d4f3a0a5685261.jpg", "media/26.1.13-26.1.17/vc/2c919e6c720858fc88479ff524f4678d.jpg", "media/26.1.13-26.1.17/vc/338cb866b996f2905c63a36346dc333e.jpg", "media/26.1.13-26.1.17/vc/4a785e49a290a443f222d837560bd0cf.jpg", "media/26.1.13-26.1.17/vc/4c97ee8c234e21ea8e204bf65308bcf7.jpg", "media/26.1.13-26.1.17/vc/5f07d9360886e74f1e8d501a666c311b.jpg", "media/26.1.13-26.1.17/vc/61f64cccd11d8fdcf2eea404af0c1934.jpg", "media/26.1.13-26.1.17/vc/688a2c3a5441dbd8c2d1ab76e17b3a50.jpg", "media/26.1.13-26.1.17/vc/78cbe7e95e786e97f875a45bc1e975d2.jpg", "media/26.1.13-26.1.17/vc/95d96c04501714409c40d4a2c128fba7.jpg", "media/26.1.13-26.1.17/vc/99bd95bdce6467b3d204345114a37f92.jpg", "media/26.1.13-26.1.17/vc/9a778bc95d5706e6a56226fff3fdf25b.jpg", "media/26.1.13-26.1.17/vc/b08ff7e733c94bad021b3e8a04a3bcc5.jpg", "media/26.1.13-26.1.17/vc/b816df7666cbf2f4417e604fe318d603.jpg", "media/26.1.13-26.1.17/vc/b8a34a92aed068b6b54ecd303a7eb5c0.jpg", "media/26.1.13-26.1.17/vc/b92517bc314900f5d2ca70ecfa1f34ce.jpg", "media/26.1.13-26.1.17/vc/d0ac03cf9d8e48626a31bcbda0182a48.jpg", "media/26.1.13-26.1.17/vc/d35202ff766735f9e9080476dd5b69db.jpg", "media/26.1.13-26.1.17/vc/e2424ca4b35e221918f479e73c4d7074.jpg", "media/26.1.13-26.1.17/vc/e8ad8b787bd7b60c82410e2bcfda10fc.jpg", "media/26.1.13-26.1.17/vc/f7ea5e78daf146a7aab8f320c6950ab9.jpg"],v:[],t:""},
+{d:"26.1.25-26.1.26",m:"first_reunion_home",i:["media/26.1.25-26.1.26/first_reunion_home/IMG_2316.JPG", "media/26.1.25-26.1.26/first_reunion_home/IMG_2319.JPG", "media/26.1.25-26.1.26/first_reunion_home/IMG_9207.HEIC", "media/26.1.25-26.1.26/first_reunion_home/IMG_9216.HEIC"],v:["media/26.1.25-26.1.26/first_reunion_home/IMG_9223_live.MOV"],t:"你终于回乌鲁木齐了，我俩都太想彼此了，但我突然想起来这一天其实是我俩首次都自己化妆拍照玩。"},
+{d:"26.1.25-26.1.26",m:"no_crying_ktv",i:["media/26.1.25-26.1.26/no_crying_ktv/IMG_1952.HEIC", "media/26.1.25-26.1.26/no_crying_ktv/IMG_1979.HEIC", "media/26.1.25-26.1.26/no_crying_ktv/IMG_2421.HEIC", "media/26.1.25-26.1.26/no_crying_ktv/IMG_2423.HEIC", "media/26.1.25-26.1.26/no_crying_ktv/IMG_2436.HEIC", "media/26.1.25-26.1.26/no_crying_ktv/IMG_2440.HEIC", "media/26.1.25-26.1.26/no_crying_ktv/IMG_2470.HEIC", "media/26.1.25-26.1.26/no_crying_ktv/IMG_2482.HEIC", "media/26.1.25-26.1.26/no_crying_ktv/IMG_2499.HEIC"],v:[],t:""},
+{d:"26.1.29-26.2.3",m:"bead_crafting",i:["media/26.1.29-26.2.3/bead_crafting/IMG_2554.HEIC", "media/26.1.29-26.2.3/bead_crafting/IMG_2557.HEIC", "media/26.1.29-26.2.3/bead_crafting/IMG_2560.HEIC"],v:[],t:"这一天你拼了一个鹧鸪和一个侃爷，我都不知道山缓缓这么好吃。"},
+{d:"26.1.29-26.2.3",m:"first_ski_trip",i:["media/26.1.29-26.2.3/first_ski_trip/IMG_2740.HEIC", "media/26.1.29-26.2.3/first_ski_trip/IMG_2772.HEIC", "media/26.1.29-26.2.3/first_ski_trip/IMG_2780.HEIC", "media/26.1.29-26.2.3/first_ski_trip/IMG_2813.HEIC", "media/26.1.29-26.2.3/first_ski_trip/IMG_2817.HEIC", "media/26.1.29-26.2.3/first_ski_trip/IMG_2822.HEIC", "media/26.1.29-26.2.3/first_ski_trip/IMG_2828.HEIC", "media/26.1.29-26.2.3/first_ski_trip/IMG_2834.HEIC", "media/26.1.29-26.2.3/first_ski_trip/IMG_2854.HEIC", "media/26.1.29-26.2.3/first_ski_trip/IMG_2883.HEIC", "media/26.1.29-26.2.3/first_ski_trip/IMG_2899.HEIC", "media/26.1.29-26.2.3/first_ski_trip/IMG_2900.HEIC", "media/26.1.29-26.2.3/first_ski_trip/IMG_2911.HEIC", "media/26.1.29-26.2.3/first_ski_trip/IMG_2913.HEIC", "media/26.1.29-26.2.3/first_ski_trip/IMG_2925.HEIC", "media/26.1.29-26.2.3/first_ski_trip/IMG_5751.HEIC", "media/26.1.29-26.2.3/first_ski_trip/IMG_5775.HEIC", "media/26.1.29-26.2.3/first_ski_trip/IMG_5833.HEIC"],v:[],t:""},
+{d:"26.1.29-26.2.3",m:"nail_day",i:["media/26.1.29-26.2.3/nail_day/IMG_2624.HEIC", "media/26.1.29-26.2.3/nail_day/IMG_2637(20260321-012114).JPG", "media/26.1.29-26.2.3/nail_day/IMG_2662.HEIC", "media/26.1.29-26.2.3/nail_day/IMG_2669.HEIC", "media/26.1.29-26.2.3/nail_day/IMG_2685.HEIC", "media/26.1.29-26.2.3/nail_day/IMG_2692.HEIC"],v:[],t:""},
+{d:"26.2.13-26.2.14",m:"nanshan_drive",i:["media/26.2.13-26.2.14/nanshan_drive/3940812b0ee8122f0c30f20fdc6ed1dc.jpg", "media/26.2.13-26.2.14/nanshan_drive/5f30e641a9f11b465e96a74b44375054.jpg", "media/26.2.13-26.2.14/nanshan_drive/69c848604c912fc42cb13db0685627_livephoto.HEIC", "media/26.2.13-26.2.14/nanshan_drive/9b0c4aad28858bd6b1a1a8b5919d0196.jpg", "media/26.2.13-26.2.14/nanshan_drive/DSCF3793.JPG", "media/26.2.13-26.2.14/nanshan_drive/IMG_2017.HEIC", "media/26.2.13-26.2.14/nanshan_drive/IMG_2057.HEIC", "media/26.2.13-26.2.14/nanshan_drive/IMG_2058.HEIC", "media/26.2.13-26.2.14/nanshan_drive/IMG_2065.HEIC", "media/26.2.13-26.2.14/nanshan_drive/IMG_2072.HEIC", "media/26.2.13-26.2.14/nanshan_drive/IMG_2082.HEIC", "media/26.2.13-26.2.14/nanshan_drive/IMG_2095.HEIC", "media/26.2.13-26.2.14/nanshan_drive/IMG_2107.HEIC", "media/26.2.13-26.2.14/nanshan_drive/IMG_2111.HEIC", "media/26.2.13-26.2.14/nanshan_drive/IMG_3357.HEIC", "media/26.2.13-26.2.14/nanshan_drive/IMG_9692.HEIC", "media/26.2.13-26.2.14/nanshan_drive/IMG_9731.HEIC"],v:[],t:"两个人从来没有同时这么美过，这天也是足以载入史册的存在，我选照片都花了好久才挑出来这么几张照片。"},
+{d:"26.2.13-26.2.14",m:"vc",i:["media/26.2.13-26.2.14/vc/IMG_3526.PNG"],v:[],t:""},
+{d:"26.2.19-26.4.2",m:"first_mahjong",i:["media/26.2.19-26.4.2/first_mahjong/2CC5C1CA1168E076D4323C68B5B8D959.png", "media/26.2.19-26.4.2/first_mahjong/IMG_3715.HEIC", "media/26.2.19-26.4.2/first_mahjong/IMG_3718.HEIC", "media/26.2.19-26.4.2/first_mahjong/IMG_3745.HEIC"],v:[],t:"好这个也是很重要的一天，你和牙牙带我学会了麻将，我走上一条不归路。不过要不是麻将的话我军训都没法认识那么多朋友。麻将真的太上瘾了。"},
+{d:"26.2.19-26.4.2",m:"ski_roadtrip",i:["media/26.2.19-26.4.2/ski_roadtrip/IMG_3794.HEIC", "media/26.2.19-26.4.2/ski_roadtrip/IMG_7692.HEIC", "media/26.2.19-26.4.2/ski_roadtrip/IMG_7701.HEIC", "media/26.2.19-26.4.2/ski_roadtrip/IMG_7719.HEIC", "media/26.2.19-26.4.2/ski_roadtrip/IMG_7744.HEIC", "media/26.2.19-26.4.2/ski_roadtrip/IMG_7748.HEIC", "media/26.2.19-26.4.2/ski_roadtrip/IMG_7751.HEIC", "media/26.2.19-26.4.2/ski_roadtrip/IMG_7753.HEIC", "media/26.2.19-26.4.2/ski_roadtrip/IMG_7761.HEIC", "media/26.2.19-26.4.2/ski_roadtrip/IMG_7763.HEIC"],v:["media/26.2.19-26.4.2/ski_roadtrip/IMG_3753.MOV", "media/26.2.19-26.4.2/ski_roadtrip/IMG_3756.MOV"],t:""},
+{d:"26.2.6-26.2.9",m:"badminton_day",i:["media/26.2.6-26.2.9/badminton_day/96591ca16eb30034d1e83e8edc081f95.jpg", "media/26.2.6-26.2.9/badminton_day/IMG_3066.HEIC", "media/26.2.6-26.2.9/badminton_day/IMG_3070.HEIC", "media/26.2.6-26.2.9/badminton_day/IMG_3075.HEIC", "media/26.2.6-26.2.9/badminton_day/IMG_3078.HEIC", "media/26.2.6-26.2.9/badminton_day/IMG_3087.HEIC", "media/26.2.6-26.2.9/badminton_day/first_by_ur_car.HEIC"],v:["media/26.2.6-26.2.9/badminton_day/7012a82102444635a3f711901c0fca5f.mov"],t:"叫你不要穿高跟鞋你非要穿。我都不知道王伟坤打这么差，我以为他在谦虚。你穿欧阳的maxmara真的有点像狼外婆。这天是我第一次坐你开的车，开心开心，反正我也看不懂你开的好不好。"},
+{d:"26.4.24-26.5.21",m:"flower_521",i:["media/26.4.24-26.5.21/flower_521/IMG_8123.HEIC", "media/26.4.24-26.5.21/flower_521/IMG_8153.HEIC", "media/26.4.24-26.5.21/flower_521/IMG_8158.HEIC"],v:[],t:"我那天拿上花特别幸福呀，有人惦记真好。"},
+{d:"26.4.24-26.5.21",m:"vc",i:["media/26.4.24-26.5.21/vc/image_b0d0d139e63fc96ef1c384b017e558b9.jpeg", "media/26.4.24-26.5.21/vc/image_cc03b31afd0b63e271a9a4f30f1eec98.jpeg"],v:[],t:""},
+];
+
+const c=document.getElementById("content");
+let ld="",ti=0,clipUsed=[];
+
+function randClip(){let i;do{i=XIAOJIAZI[Math.floor(Math.random()*XIAOJIAZI.length)]}while(clipUsed.length>=XIAOJIAZI.length&&clipUsed.includes(i));clipUsed.push(i);return i}
+function randPin(){return QUBIEZHEN[Math.floor(Math.random()*QUBIEZHEN.length)]}
+
+PAGES.forEach((p,pi)=>{
+  // Date folder header
+  if(p.d!==ld){
+    if(ld) c.innerHTML+='<div class="torn" style="background:var(--paper);"></div>';
+    c.innerHTML+='<section style="background:'+TONES[ti%TONES.length]+';position:relative;overflow:hidden" class="reveal"><div class="bg-note" style="background-image:url(\'bg/'+rb()+'\')"></div><div class="chapter-head"><div class="num">· '+p.d+' ·</div><h2>'+p.d+'</h2></div>';
+    ld=p.d;ti++;
+  }
+
+  // Label
+  c.innerHTML+='<div class="folder-label">▸ '+p.m+'</div>';
+
+  // Images — centered collage
+  if(p.i.length>0){
+    c.innerHTML+='<div class="collage">';
+    p.i.forEach((img,ii)=>{
+      const tc=TAPE[ii%2][ii%4];
+      const tp=ii%2===0?'left:'+(14+ii*5%20)+'px;width:'+(55+ii*3%20)+'px;transform:rotate('+(-8+ii*2%10)+'deg)':'right:'+(12+ii*4%20)+'px;width:'+(52+ii*4%20)+'px;transform:rotate('+(4+ii*3%10)+'deg)';
+      const mw=(270+Math.random()*60).toFixed(0);
+      c.innerHTML+='<div class="photo-card photo-corners" style="max-width:'+mw+'px;margin-top:'+(Math.random()*18)+'px" data-card="1"><div class="photo-tape" style="background:'+tc+';'+tp+'"></div><img src="'+img+'" alt="" loading="lazy" onerror="this.parentElement.style.display=\'none\'"></div>';
+    });
+    c.innerHTML+='</div>';
+    // Add clips/pins after collage is rendered
+    setTimeout(()=>{
+      const cards=c.querySelectorAll('.photo-card[data-card="1"]');
+      cards.forEach((card,i)=>{
+        if(i<cards.length/2){
+          const ci=randClip();const cl=document.createElement('img');cl.className='photo-clip';cl.src='assets/clips/xiaojiazi/jiazi ('+ci+').png';cl.alt='';const cw=card.offsetWidth||310;cl.style.width=(cw*0.30+Math.random()*cw*0.13).toFixed(0)+'px';cl.style.setProperty('--clip-rotate',(Math.random()*8-4).toFixed(1)+'deg');card.appendChild(cl);
+        }else{
+          const pi2=randPin();const pn=document.createElement('img');pn.className='photo-pin';const isL=Math.random()>.5;pn.classList.add(isL?'pin-tl':'pin-tr');pn.src='assets/clips/qubiezhen/jiazi ('+pi2+').png';pn.alt='';const cw=card.offsetWidth||310;pn.style.width=(cw*0.13+Math.random()*cw*0.12).toFixed(0)+'px';const tilt=isL?(30+Math.random()*15):-(30+Math.random()*15);pn.style.setProperty('--pin-rotate',tilt.toFixed(1)+'deg');card.appendChild(pn);
+        }
+      });
+    },100);
+  }
+
+  // Memory text — all 48 entries (show placeholder if no text yet)
+  c.innerHTML+='<div class="memory-text">'+(p.t||'📝 关于 「'+p.m+'」 的记忆…')+'</div>';
+
+  // Videos
+  if(p.v.length>0){
+    c.innerHTML+='<div class="folder-label">▸ '+p.m+' · 视频</div>';
+    p.v.forEach(v=>{c.innerHTML+='<div class="video-wrap"><video src="'+v+'" controls preload="metadata" playsinline></video></div>';});
+  }
+});
+c.innerHTML+='</section>';
+
+// Reveal
+const obs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")})},{threshold:0.1,rootMargin:"0px 0px -40px 0px"});
+document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
+
+// Modal
+const modal=document.getElementById("modal"),mi=document.getElementById("modalImg");
+document.addEventListener("click",e=>{if(e.target.closest(".photo-card img")){mi.src=e.target.src;modal.classList.add("active");document.body.style.overflow="hidden"}});
+document.getElementById("modalClose").addEventListener("click",()=>{modal.classList.remove("active");document.body.style.overflow=""});
+modal.addEventListener("click",e=>{if(e.target===modal){modal.classList.remove("active");document.body.style.overflow=""}});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("active")){modal.classList.remove("active");document.body.style.overflow=""}});
+</script>
+</body>
+</html>
