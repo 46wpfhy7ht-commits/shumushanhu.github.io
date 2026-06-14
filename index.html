@@ -44,25 +44,45 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
 .music-btn{position:fixed;bottom:20px;right:20px;z-index:100;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.85);border:1.5px solid var(--sepia);cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.12);transition:all .3s}
 .music-btn:hover{background:#fff;box-shadow:0 4px 16px rgba(0,0,0,0.18)}
 .music-btn.off{opacity:.5}
-/* Splash page */
-.splash{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;background:#F5EDE0;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s}
-.splash.hide{opacity:0;pointer-events:none;visibility:hidden}
-.splash-line{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:4px 0}
-.splash-letter{width:clamp(36px,6vw,80px);height:auto;transition:opacity .3s}
-.splash-letter.changing{opacity:0}
-.splash-hint{position:absolute;bottom:40px;font-family:var(--font);color:var(--ink-light);font-size:14px;animation:pulse 2s infinite}
+/* Intro pages */
+.intro-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;background:var(--cream)}
+.intro-page{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 30px;transition:opacity .6s,transform .6s;cursor:pointer}
+.intro-page.hide{opacity:0;pointer-events:none;transform:translateY(-20px)}
+.intro-page.p1 h2{font-family:var(--font);font-size:clamp(32px,5vw,56px);color:var(--ink);line-height:1.4}
+.intro-page.p2{background:#FFFEF7;background-image:repeating-linear-gradient(0deg,transparent,transparent 28px,rgba(130,150,170,.10) 28px,rgba(130,150,170,.10) 29px);box-shadow:inset 36px 0 0 0 rgba(200,165,155,.06)}
+.intro-page.p2 .note-text{max-width:600px;text-align:left;font-family:var(--font);font-size:clamp(16px,2.2vw,20px);color:var(--ink);line-height:2;text-indent:1em;padding:0 10px}
+.intro-page.p3 h2{font-family:var(--font);font-size:clamp(30px,4.5vw,50px);color:var(--ink)}
+.intro-hint{position:absolute;bottom:30px;font-family:var(--font);color:var(--ink-light);font-size:13px;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:.4}50%{opacity:.8}}
-@media(max-width:768px){html{font-size:16px}section{padding:30px 14px 40px}.photo-card{max-width:180px}.splash-letter{width:clamp(28px,5vw,50px)}}
+@media(max-width:768px){.intro-page.p1 h2{font-size:clamp(26px,6vw,38px)}.intro-page.p3 h2{font-size:clamp(22px,5vw,34px)}.intro-page.p2 .note-text{font-size:clamp(14px,3vw,17px)}}
+</style>
 </style>
 </head>
 <body>
 <div class="bg-grid"></div>
 
-<!-- ====== SPLASH PAGE ====== -->
-<div class="splash" id="splash">
-  <div class="splash-line" id="line1"></div>
-  <div class="splash-line" id="line2"></div>
-  <p class="splash-hint">点击任意位置进入</p>
+<!-- ====== INTRO PAGES ====== -->
+<div class="intro-overlay" id="introOverlay">
+  <div class="intro-page p1" id="introP1">
+    <h2>祝你生日快乐！</h2>
+    <p class="intro-hint">点击继续</p>
+  </div>
+  <div class="intro-page p2 hide" id="introP2">
+    <div class="note-text">
+      <p>如你所见，这是一个很草率很简陋的电子相册，附带音乐和一些小文字。接下来请沉浸在这场时空之旅吧！</p>
+      <p style="margin-top:12px;font-weight:600">注意事项：</p>
+      <p style="margin-top:4px">1. 因为是我第一次做这种东西，所以可能会有bug，敬请谅解😣</p>
+      <p style="margin-top:4px">2. 一开始加载可能会比较慢，可以仔细阅读慢点往下滑🤓</p>
+      <p style="margin-top:4px">3. 这个网站的承受能力有限制，我也很想分享出去，但这一版承受不了除了我俩以外的人的点击😔</p>
+      <p style="margin-top:4px">4. 如果看的过程中出现了其他问题，可以尝试重进，然后再慢慢往下滑等它一点一点加载。</p>
+      <p style="margin-top:4px">5. 视频如果看到一半要往下滑需要手动暂停，不然背景会一直有视频的声音。</p>
+    </div>
+    <p class="intro-hint">点击继续</p>
+  </div>
+  <div class="intro-page p3 hide" id="introP3">
+    <h2>准备好了吗？<br>让我们开始吧！</h2>
+    <p class="intro-hint">点击进入</p>
+  </div>
 </div>
 
 <audio id="bgm" preload="auto"></audio>
@@ -88,65 +108,20 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
 <div class="modal-overlay" id="modal"><span class="modal-close" id="mc">&times;</span><img id="mi" src=""></div>
 
 <script>
-// ====== SPLASH PAGE ======
+// ====== INTRO PAGES ======
 (function(){
-  var splash=document.getElementById('splash');
-
-  // Build letter arrays
-  var words=[['H','A','P','P','Y'],['B','I','R','T','H','D','A','Y']];
-  var lines=[document.getElementById('line1'),document.getElementById('line2')];
-
-  // Preload image lists per letter
-  var imgLists={};
-  ['H','A','P','Y','B','I','R','T','D'].forEach(function(l){
-    imgLists[l]=[];
-    for(var i=1;i<=10;i++){imgLists[l].push('assets/letters/'+l+'/南迦素材 ('+i+').png')}
+  var pages=['introP1','introP2','introP3'],cur=0;
+  document.getElementById('introOverlay').addEventListener('click',function(){
+    document.getElementById(pages[cur]).classList.add('hide');
+    cur++;
+    if(cur>=pages.length){
+      document.getElementById('introOverlay').style.display='none';
+      var bgm=document.getElementById('bgm');
+      if(bgm&&bgm.paused){bgm.muted=true;bgm.play().catch(function(){})}
+    }else{
+      document.getElementById(pages[cur]).classList.remove('hide');
+    }
   });
-  // Create img elements for each letter
-  var allImgs=[];
-  words.forEach(function(word,li){
-    word.forEach(function(letter,ci){
-      var img=document.createElement('img');
-      img.className='splash-letter';
-      img.src=imgLists[letter][0];
-      img.setAttribute('data-letter',letter);
-      lines[li].appendChild(img);
-      allImgs.push(img);
-    });
-  });
-
-  // Cycle function for each letter with staggered start
-  allImgs.forEach(function(img,i){
-    var letter=img.getAttribute('data-letter');
-    var pool=imgLists[letter];
-    if(!pool||pool.length<2)return;
-    var idx=0;
-    // Stagger start: each letter starts at a different time offset
-    var offset=Math.random()*800; // 0-800ms random offset
-    setTimeout(function(){
-      setInterval(function(){
-        img.classList.add('changing');
-        setTimeout(function(){
-          idx=(idx+1)%pool.length;
-          img.src=pool[idx];
-          img.classList.remove('changing');
-        },150);
-      }, 2000+Math.random()*1000); // 2-3s interval
-    },offset);
-  });
-
-  // Dismiss on click
-  splash.addEventListener('click',function(){
-    splash.classList.add('hide');
-    // Try start music
-    var bgm=document.getElementById('bgm');
-    if(bgm&&bgm.paused){bgm.muted=true;bgm.play().catch(function(){})}
-  });
-
-  // Auto-dismiss after 30 seconds
-  setTimeout(function(){
-    if(!splash.classList.contains('hide'))splash.classList.add('hide');
-  },30000);
 })();
 
 var TONES=["#E5DDD5","#DDD4CA","#E8DED2","#E3D9CF","#E0D8C8","#DED5C9","#DFD5C8"];
