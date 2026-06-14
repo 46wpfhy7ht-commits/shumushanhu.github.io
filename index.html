@@ -191,15 +191,27 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
   document.getElementById('hbSplash').addEventListener('click',function(){
     document.getElementById('hbSplash').classList.add('hide');
     var bgm=document.getElementById('bgm');
-    bgm.muted=false;bgm.volume=0.35;
-    var p=bgm.play();
-    if(p!==undefined){p.then(function(){
-      document.getElementById('musicBtn').textContent='🔊';
-      document.getElementById('musicBtn').classList.remove('off');
-    }).catch(function(){
-      bgm.muted=true;
-      bgm.play().then(function(){document.getElementById('musicBtn').textContent='🔈'}).catch(function(){})
-    })}
+    if(bgm.paused){
+      bgm.volume=0.35;bgm.muted=false;
+      bgm.play().then(function(){
+        document.getElementById('musicBtn').textContent='🔊';
+        document.getElementById('musicBtn').classList.remove('off');
+      }).catch(function(){
+        // Mobile may require muted first
+        bgm.muted=true;
+        bgm.play().then(function(){
+          document.getElementById('musicBtn').textContent='🔈';
+          document.getElementById('musicBtn').classList.remove('off');
+          // Then unmute on next user interaction
+          var unmute=function(){
+            bgm.muted=false;
+            document.getElementById('musicBtn').textContent='🔊';
+            document.removeEventListener('click',unmute);
+          };
+          document.addEventListener('click',unmute);
+        }).catch(function(){});
+      });
+    }
   });
   setTimeout(function(){
     var s=document.getElementById('hbSplash');
@@ -212,11 +224,6 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
 (function(){
   var pages=['introP1','introP2','introP3'],cur=0;
   document.getElementById('introOverlay').addEventListener('click',function(){
-    // Ensure music is audible
-    var bgm=document.getElementById('bgm');
-    if(bgm.muted){bgm.muted=false;bgm.play().catch(function(){})}
-    document.getElementById('musicBtn').textContent='🔊';
-    document.getElementById('musicBtn').classList.remove('off');
     document.getElementById(pages[cur]).classList.add('hide');
     cur++;
     if(cur>=pages.length){
@@ -395,15 +402,7 @@ document.onkeydown=function(e){if(e.key==='Escape')modal.classList.remove('on')}
     }
   });
 
-  // Auto-start muted on first user interaction
-  function tryAutoPlay(){
-    if(!playing){
-      bgm.muted=true;
-      bgm.play().then(function(){btn.textContent='🔈';btn.classList.remove('off');playing=true}).catch(function(){});
-    }
-  }
-  document.addEventListener('click',tryAutoPlay,{once:true});
-  document.addEventListener('scroll',tryAutoPlay,{once:true});
+  // Music started by HB splash — no auto-trigger needed
 })();
 </script>
 </body>
