@@ -55,7 +55,7 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
 .intro-hint{position:absolute;bottom:30px;font-family:var(--font);color:var(--ink-light);font-size:13px;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:.4}50%{opacity:.8}}
 /* HAPPY BIRTHDAY splash */
-.hb-splash{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;background:#F5EDE0;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 1s;cursor:pointer}
+.hb-splash{position:fixed;top:0;left:0;width:100%;height:100%;z-index:10000;background:#F5EDE0;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 1s;cursor:pointer}
 .hb-splash.hide{opacity:0;pointer-events:none}
 .hb-line{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:4px 0}
 .hb-letter{width:clamp(54px,9vw,120px);height:auto;transition:opacity .3s}
@@ -81,11 +81,7 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
     <h2>祝你生日快乐！</h2>
     <p class="intro-hint">点击继续</p>
   
-  <div class="intro-page p1 hide" id="introP4">
-    <h2>故事的开始</h2>
-    <div class="collage"><div class="photo-card" style="max-width:299px;margin-top:0px"><img src="media/primary_school/IMG_0166.JPG" loading="lazy"></div><div class="photo-card" style="max-width:253px;margin-top:9px"><img src="media/primary_school/2993ba5f821894fa1e40f29e9c8e9da8.jpg" loading="lazy"></div><div class="photo-card" style="max-width:234px;margin-top:3px"><img src="media/primary_school/IMG_0889.JPG" loading="lazy"></div><div class="photo-card" style="max-width:255px;margin-top:5px"><img src="media/primary_school/IMG_2378.JPG" loading="lazy"></div><div class="photo-card" style="max-width:267px;margin-top:11px"><img src="media/primary_school/IMG_7646.JPG" loading="lazy"></div><div class="photo-card" style="max-width:301px;margin-top:3px"><img src="media/primary_school/IMG_7714.JPG" loading="lazy"></div><div class="photo-card" style="max-width:295px;margin-top:10px"><img src="media/primary_school/IMG_4725.JPG" loading="lazy"></div><div class="photo-card" style="max-width:268px;margin-top:5px"><img src="media/primary_school/3dddbd8a8431100e1b8bc5cd40403772.jpg" loading="lazy"></div><div class="photo-card" style="max-width:294px;margin-top:6px"><img src="media/primary_school/IMG_9452.JPG" loading="lazy"></div><div class="photo-card" style="max-width:297px;margin-top:0px"><img src="media/primary_school/IMG_4450.JPG" loading="lazy"></div></div>
-    <p class="intro-hint">点击进入回忆</p>
-  </div>
+  
 </div>
   <div class="intro-page p2 hide" id="introP2">
     <div class="note-text">
@@ -103,6 +99,13 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
     <h2>准备好了吗？<br>让我们开始吧！</h2>
     <p class="intro-hint">点击进入</p>
   </div>
+<div class="intro-page p1 hide" id="introP4">
+    <h2>故事的开始</h2>
+    <div class="collage"><div class="photo-card" style="max-width:299px;margin-top:0px"><img src="media/primary_school/IMG_0166.JPG" loading="lazy"></div><div class="photo-card" style="max-width:253px;margin-top:9px"><img src="media/primary_school/2993ba5f821894fa1e40f29e9c8e9da8.jpg" loading="lazy"></div><div class="photo-card" style="max-width:234px;margin-top:3px"><img src="media/primary_school/IMG_0889.JPG" loading="lazy"></div><div class="photo-card" style="max-width:255px;margin-top:5px"><img src="media/primary_school/IMG_2378.JPG" loading="lazy"></div><div class="photo-card" style="max-width:267px;margin-top:11px"><img src="media/primary_school/IMG_7646.JPG" loading="lazy"></div><div class="photo-card" style="max-width:301px;margin-top:3px"><img src="media/primary_school/IMG_7714.JPG" loading="lazy"></div><div class="photo-card" style="max-width:295px;margin-top:10px"><img src="media/primary_school/IMG_4725.JPG" loading="lazy"></div><div class="photo-card" style="max-width:268px;margin-top:5px"><img src="media/primary_school/3dddbd8a8431100e1b8bc5cd40403772.jpg" loading="lazy"></div><div class="photo-card" style="max-width:294px;margin-top:6px"><img src="media/primary_school/IMG_9452.JPG" loading="lazy"></div><div class="photo-card" style="max-width:297px;margin-top:0px"><img src="media/primary_school/IMG_4450.JPG" loading="lazy"></div></div>
+    <p class="intro-hint">点击进入回忆</p>
+  </div>
+</div>
+
 </div>
 
 <audio id="bgm" preload="auto"></audio>
