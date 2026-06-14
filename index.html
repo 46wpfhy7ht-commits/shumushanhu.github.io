@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>给最好的朋友的18岁 ❦</title>
 <style>
-@font-face{font-family:'PF';src:url('fonts/PF频凡胡涂体 PFanHuTuTi 0.680.ttf') format('truetype');font-display:swap}
-:root{--cream:#E5DDD5;--paper:#DDD4CA;--dusty-rose:#B08086;--soft-green:#869B7E;--sepia:#AB8E65;--ink:#473324;--ink-light:#6A5948;--shadow-card:3px 4px 16px rgba(50,30,15,0.11);--font:'PF','Caveat',cursive}
+:root{--cream:#E5DDD5;--paper:#DDD4CA;--dusty-rose:#B08086;--soft-green:#869B7E;--sepia:#AB8E65;--ink:#473324;--ink-light:#6A5948;--shadow-card:3px 4px 16px rgba(50,30,15,0.11)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:18px}
-body{font-family:var(--font);color:var(--ink);background:var(--cream);overflow-x:hidden;min-height:100vh}
+body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden;min-height:100vh}
+body.pf{font-family:'PF','Caveat',cursive}
 body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(110,95,70,0.01) 3px,rgba(110,95,70,0.01) 5px),repeating-linear-gradient(90deg,transparent,transparent 2px,rgba(110,95,70,0.007) 2px,rgba(110,95,70,0.007) 4px)}
 .bg-grid{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2;pointer-events:none;background-image:linear-gradient(rgba(140,150,140,0.12) 1px,transparent 1px),linear-gradient(90deg,rgba(140,150,140,0.12) 1px,transparent 1px);background-size:20px 20px}
 section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
@@ -21,7 +21,7 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
 .chapter-head{text-align:center;margin-bottom:24px;padding-top:20px}
 .chapter-head .num{font-size:13px;color:var(--dusty-rose);letter-spacing:4px}
 .chapter-head h2{font-size:clamp(30px,4vw,48px);font-weight:600;color:var(--ink);margin-top:2px}
-.torn{height:22px;position:relative;z-index:2;margin:-4px 0;background:var(--paper);mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 28' preserveAspectRatio='none'%3E%3Cpath d='M0,14 Q35,2 70,16 T140,7 T210,20 T280,4 T350,17 T420,10 T490,22 T560,5 T630,18 T700,11 T770,20 T840,8 T910,19 T980,6 T1050,21 T1120,9 T1200,15 L1200,0 L0,0 Z' fill='black'/%3E%3C/svg%3E");-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 28' preserveAspectRatio='none'%3E%3Cpath d='M0,14 Q35,2 70,16 T140,7 T210,20 T280,4 T350,17 T420,10 T490,22 T560,5 T630,18 T700,11 T770,20 T840,8 T910,19 T980,6 T1050,21 T1120,9 T1200,15 L1200,0 L0,0 Z' fill='black'/%3E%3C/svg%3E");-webkit-mask-size:100% 100%;mask-size:100% 100%}
+.torn{height:22px;margin:-4px 0;background:var(--paper);mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 28' preserveAspectRatio='none'%3E%3Cpath d='M0,14 Q35,2 70,16 T140,7 T210,20 T280,4 T350,17 T420,10 T490,22 T560,5 T630,18 T700,11 T770,20 T840,8 T910,19 T980,6 T1050,21 T1120,9 T1200,15 L1200,0 L0,0 Z' fill='black'/%3E%3C/svg%3E");-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 28' preserveAspectRatio='none'%3E%3Cpath d='M0,14 Q35,2 70,16 T140,7 T210,20 T280,4 T350,17 T420,10 T490,22 T560,5 T630,18 T700,11 T770,20 T840,8 T910,19 T980,6 T1050,21 T1120,9 T1200,15 L1200,0 L0,0 Z' fill='black'/%3E%3C/svg%3E");-webkit-mask-size:100% 100%;mask-size:100% 100%}
 .photo-card{background:#FDFCF7;padding:6px 6px 26px 6px;box-shadow:var(--shadow-card);display:inline-block;position:relative;z-index:1;transform:rotate(var(--tilt,-1deg));transition:transform .35s;cursor:pointer;max-width:280px}
 .photo-card:hover{transform:rotate(0deg) scale(1.05);box-shadow:4px 8px 24px rgba(50,30,15,0.16);z-index:5}
 .photo-card img{display:block;width:100%;height:auto;filter:sepia(.16) brightness(.93) contrast(1.05) saturate(.86)}
@@ -34,8 +34,8 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
 .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(25,15,8,.9);z-index:999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
 .modal-overlay.on{opacity:1;pointer-events:all}
 .modal-overlay img{max-width:78vw;max-height:85vh;box-shadow:0 12px 48px rgba(0,0,0,.5);background:#fff;padding:9px 9px 36px 9px}
-.modal-close{position:absolute;top:18px;right:28px;font-size:44px;color:#fff;cursor:pointer;z-index:1000;opacity:.8}
-@media(max-width:768px){html{font-size:16px}section{padding:30px 14px 40px}.photo-card{max-width:180px;padding:5px 5px 22px 5px}}
+.modal-close{position:absolute;top:18px;right:28px;font-size:44px;color:#fff;cursor:pointer;opacity:.8}
+@media(max-width:768px){html{font-size:16px}section{padding:30px 14px 40px}.photo-card{max-width:180px}}
 </style>
 </head>
 <body>
@@ -67,8 +67,7 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
 <div class="modal-overlay" id="modal"><span class="modal-close" id="mc">&times;</span><img id="mi" src=""></div>
 
 <script>
-const TONES=["#E5DDD5","#DDD4CA","#E8DED2","#E3D9CF","#E0D8C8","#DED5C9","#DFD5C8"];
-
+var TONES=["#E5DDD5","#DDD4CA","#E8DED2","#E3D9CF","#E0D8C8","#DED5C9","#DFD5C8"];
 const PAGES = [
 {d:"21.12.19-22.12.11",m:"(根)",i:["media/21.12.19-22.12.11/b_group_pageant.PNG", "media/21.12.19-22.12.11/first_photo_after_middle_school_exam.HEIC"],v:[],t:""},
 {d:"21.12.19-22.12.11",m:"hospital_visit",i:["media/21.12.19-22.12.11/hospital_visit/IMG_5201.JPG", "media/21.12.19-22.12.11/hospital_visit/IMG_5203.JPG"],v:["media/21.12.19-22.12.11/hospital_visit/IMG_5196.MOV"],t:""},
@@ -119,8 +118,6 @@ const PAGES = [
 {d:"26.4.24-26.5.21",m:"flower_521",i:["media/26.4.24-26.5.21/flower_521/IMG_8123.HEIC", "media/26.4.24-26.5.21/flower_521/IMG_8153.HEIC", "media/26.4.24-26.5.21/flower_521/IMG_8158.HEIC"],v:[],t:"我那天拿上花特别幸福呀，有人惦记真好。"},
 {d:"26.4.24-26.5.21",m:"vc",i:["media/26.4.24-26.5.21/vc/image_b0d0d139e63fc96ef1c384b017e558b9.jpeg", "media/26.4.24-26.5.21/vc/image_cc03b31afd0b63e271a9a4f30f1eec98.jpeg"],v:[],t:""},
 ];
-
-// Build all content as string, set innerHTML ONCE
 (function(){
   var h="",ld="",ti=0;
   PAGES.forEach(function(p){
@@ -147,8 +144,6 @@ const PAGES = [
   h+='</section>';
   document.getElementById('content').innerHTML=h;
 })();
-
-// Modal
 var modal=document.getElementById('modal'),mi=document.getElementById('mi');
 document.addEventListener('click',function(e){
   var t=e.target.closest('.photo-card img');
@@ -156,7 +151,14 @@ document.addEventListener('click',function(e){
 });
 document.getElementById('mc').onclick=function(){modal.classList.remove('on')};
 modal.onclick=function(e){if(e.target===modal)modal.classList.remove('on')};
-document.onkeydown=function(e){if(e.key==='Escape')modal.classList.remove('on')};
+
+// Async font load - non-blocking
+setTimeout(function(){
+  var s=document.createElement('style');
+  s.textContent="@font-face{font-family:'PF';src:url('fonts/PF%E9%A2%91%E5%87%A1%E8%83%A1%E6%B6%82%E4%BD%93%20PFanHuTuTi%200.680.ttf') format('truetype');font-display:swap}";
+  document.head.appendChild(s);
+  s.onload=function(){document.body.classList.add('pf')};
+},300);
 </script>
 </body>
 </html>
