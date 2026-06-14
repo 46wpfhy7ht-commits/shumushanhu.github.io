@@ -40,11 +40,17 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
 .modal-overlay.on{opacity:1;pointer-events:all}
 .modal-overlay img{max-width:78vw;max-height:85vh;box-shadow:0 12px 48px rgba(0,0,0,.5);background:#fff;padding:9px 9px 36px 9px}
 .modal-close{position:absolute;top:18px;right:28px;font-size:44px;color:#fff;cursor:pointer;opacity:.8}
+/* Music player */
+.music-btn{position:fixed;bottom:20px;right:20px;z-index:100;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.85);border:1.5px solid var(--sepia);cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.12);transition:all .3s}
+.music-btn:hover{background:#fff;box-shadow:0 4px 16px rgba(0,0,0,0.18)}
+.music-btn.off{opacity:.5}
 @media(max-width:768px){html{font-size:16px}section{padding:30px 14px 40px}.photo-card{max-width:180px}}
 </style>
 </head>
 <body>
 <div class="bg-grid"></div>
+<audio id="bgm" preload="auto"></audio>
+<button class="music-btn" id="musicBtn" title="音乐">🔇</button>
 
 <section class="cover">
   <h1><em>给我最好的朋友</em><span class="r">19</span>岁的<span class="g">回忆录</span></h1>
@@ -199,6 +205,49 @@ document.addEventListener('click',function(e){
 document.getElementById('mc').onclick=function(){modal.classList.remove('on')};
 modal.onclick=function(e){if(e.target===modal)modal.classList.remove('on')};
 document.onkeydown=function(e){if(e.key==='Escape')modal.classList.remove('on')};
+
+// ====== Background Music Playlist ======
+(function(){
+  var playlist=['music/1.mp3','music/2.mp3','music/3.mp3','music/4.mp3','music/5.mp3'];
+  var cur=0, bgm=document.getElementById('bgm'), btn=document.getElementById('musicBtn'), playing=false;
+  bgm.volume=0.35;
+  bgm.src=playlist[0];
+
+  bgm.addEventListener('ended',function(){
+    cur=(cur+1)%playlist.length;
+    bgm.src=playlist[cur];
+    bgm.play();
+  });
+
+  bgm.addEventListener('play',function(){btn.textContent='🔊';btn.classList.remove('off')});
+  bgm.addEventListener('pause',function(){btn.textContent='🔇';btn.classList.add('off')});
+
+  btn.addEventListener('click',function(){
+    if(bgm.paused){
+      // Try to play
+      var p=bgm.play();
+      if(p!==undefined){p.then(function(){
+        bgm.muted=false;playing=true;
+      }).catch(function(){
+        // Autoplay blocked — start muted
+        bgm.muted=true;
+        bgm.play().then(function(){btn.textContent='🔈';btn.classList.remove('off');playing=true});
+      })}
+    }else{
+      bgm.pause();
+    }
+  });
+
+  // Auto-start muted on first user interaction
+  function tryAutoPlay(){
+    if(!playing){
+      bgm.muted=true;
+      bgm.play().then(function(){btn.textContent='🔈';btn.classList.remove('off');playing=true}).catch(function(){});
+    }
+  }
+  document.addEventListener('click',tryAutoPlay,{once:true});
+  document.addEventListener('scroll',tryAutoPlay,{once:true});
+})();
 </script>
 </body>
 </html>
