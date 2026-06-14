@@ -62,7 +62,6 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
 <div class="splash" id="splash">
   <div class="splash-line" id="line1"></div>
   <div class="splash-line" id="line2"></div>
-  <div class="splash-line" id="line3"></div>
   <p class="splash-hint">点击任意位置进入</p>
 </div>
 
@@ -94,8 +93,8 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
   var splash=document.getElementById('splash');
 
   // Build letter arrays
-  var words=[['H','A','P','P','Y'],['B','I','R','T','H','D','A','Y'],['!']];
-  var lines=[document.getElementById('line1'),document.getElementById('line2'),document.getElementById('line3')];
+  var words=[['H','A','P','P','Y'],['B','I','R','T','H','D','A','Y']];
+  var lines=[document.getElementById('line1'),document.getElementById('line2')];
 
   // Preload image lists per letter
   var imgLists={};
@@ -103,9 +102,6 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
     imgLists[l]=[];
     for(var i=1;i<=10;i++){imgLists[l].push('assets/letters/'+l+'/南迦素材 ('+i+').png')}
   });
-  imgLists['!']=[];
-  for(var i=10;i<=14;i++){imgLists['!'].push('assets/letters/mark/南迦素材 ('+i+').png')}
-
   // Create img elements for each letter
   var allImgs=[];
   words.forEach(function(word,li){
@@ -135,7 +131,7 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
           img.src=pool[idx];
           img.classList.remove('changing');
         },150);
-      }, 1800+Math.random()*400); // ~2s interval with jitter
+      }, 2000+Math.random()*1000); // 2-3s interval
     },offset);
   });
 
@@ -147,10 +143,10 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
     if(bgm&&bgm.paused){bgm.muted=true;bgm.play().catch(function(){})}
   });
 
-  // Auto-dismiss after 8 seconds
+  // Auto-dismiss after 30 seconds
   setTimeout(function(){
     if(!splash.classList.contains('hide'))splash.classList.add('hide');
-  },8000);
+  },30000);
 })();
 
 var TONES=["#E5DDD5","#DDD4CA","#E8DED2","#E3D9CF","#E0D8C8","#DED5C9","#DFD5C8"];
