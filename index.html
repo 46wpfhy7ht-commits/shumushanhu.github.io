@@ -99,11 +99,6 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
     <h2>准备好了吗？<br>让我们开始吧！</h2>
     <p class="intro-hint">点击进入</p>
   </div>
-<div class="intro-page p1 hide" id="introP4">
-    <h2>故事的开始</h2>
-    <div class="collage"><div class="photo-card" style="max-width:299px;margin-top:0px"><img src="media/primary_school/IMG_0166.JPG" loading="lazy"></div><div class="photo-card" style="max-width:253px;margin-top:9px"><img src="media/primary_school/2993ba5f821894fa1e40f29e9c8e9da8.jpg" loading="lazy"></div><div class="photo-card" style="max-width:234px;margin-top:3px"><img src="media/primary_school/IMG_0889.JPG" loading="lazy"></div><div class="photo-card" style="max-width:255px;margin-top:5px"><img src="media/primary_school/IMG_2378.JPG" loading="lazy"></div><div class="photo-card" style="max-width:267px;margin-top:11px"><img src="media/primary_school/IMG_7646.JPG" loading="lazy"></div><div class="photo-card" style="max-width:301px;margin-top:3px"><img src="media/primary_school/IMG_7714.JPG" loading="lazy"></div><div class="photo-card" style="max-width:295px;margin-top:10px"><img src="media/primary_school/IMG_4725.JPG" loading="lazy"></div><div class="photo-card" style="max-width:268px;margin-top:5px"><img src="media/primary_school/3dddbd8a8431100e1b8bc5cd40403772.jpg" loading="lazy"></div><div class="photo-card" style="max-width:294px;margin-top:6px"><img src="media/primary_school/IMG_9452.JPG" loading="lazy"></div><div class="photo-card" style="max-width:297px;margin-top:0px"><img src="media/primary_school/IMG_4450.JPG" loading="lazy"></div></div>
-    <p class="intro-hint">点击进入回忆</p>
-  </div>
 </div>
 
 </div>
@@ -112,6 +107,15 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
 <button class="music-btn" id="musicBtn" title="音乐">🔇</button>
 
 <div class="torn"></div>
+<div class="torn"></div>
+<section style="text-align:center;padding:40px 30px 50px">
+  <div class="" >
+    <h2>故事的开始</h2>
+    <div class="collage"><div class="photo-card" style="max-width:299px;margin-top:0px"><img src="media/primary_school/IMG_0166.JPG" loading="lazy"></div><div class="photo-card" style="max-width:253px;margin-top:9px"><img src="media/primary_school/2993ba5f821894fa1e40f29e9c8e9da8.jpg" loading="lazy"></div><div class="photo-card" style="max-width:234px;margin-top:3px"><img src="media/primary_school/IMG_0889.JPG" loading="lazy"></div><div class="photo-card" style="max-width:255px;margin-top:5px"><img src="media/primary_school/IMG_2378.JPG" loading="lazy"></div><div class="photo-card" style="max-width:267px;margin-top:11px"><img src="media/primary_school/IMG_7646.JPG" loading="lazy"></div><div class="photo-card" style="max-width:301px;margin-top:3px"><img src="media/primary_school/IMG_7714.JPG" loading="lazy"></div><div class="photo-card" style="max-width:295px;margin-top:10px"><img src="media/primary_school/IMG_4725.JPG" loading="lazy"></div><div class="photo-card" style="max-width:268px;margin-top:5px"><img src="media/primary_school/3dddbd8a8431100e1b8bc5cd40403772.jpg" loading="lazy"></div><div class="photo-card" style="max-width:294px;margin-top:6px"><img src="media/primary_school/IMG_9452.JPG" loading="lazy"></div><div class="photo-card" style="max-width:297px;margin-top:0px"><img src="media/primary_school/IMG_4450.JPG" loading="lazy"></div></div>
+    
+  </div>
+
+</section>
 <div id="content"></div>
 <div class="torn"></div>
 
@@ -206,8 +210,13 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
 
 // ====== INTRO PAGES ======
 (function(){
-  var pages=['introP1','introP2','introP3','introP4'],cur=0;
+  var pages=['introP1','introP2','introP3'],cur=0;
   document.getElementById('introOverlay').addEventListener('click',function(){
+    // Ensure music is audible
+    var bgm=document.getElementById('bgm');
+    if(bgm.muted){bgm.muted=false;bgm.play().catch(function(){})}
+    document.getElementById('musicBtn').textContent='🔊';
+    document.getElementById('musicBtn').classList.remove('off');
     document.getElementById(pages[cur]).classList.add('hide');
     cur++;
     if(cur>=pages.length){
