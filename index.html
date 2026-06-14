@@ -41,7 +41,7 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
 .modal-overlay img{max-width:78vw;max-height:85vh;box-shadow:0 12px 48px rgba(0,0,0,.5);background:#fff;padding:9px 9px 36px 9px}
 .modal-close{position:absolute;top:18px;right:28px;font-size:44px;color:#fff;cursor:pointer;opacity:.8}
 /* Music player */
-.music-btn{position:fixed;bottom:20px;right:20px;z-index:100;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.85);border:1.5px solid var(--sepia);cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.12);transition:all .3s}
+.music-btn{position:fixed;top:20px;left:20px;z-index:100;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.85);border:1.5px solid var(--sepia);cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.12);transition:all .3s}
 .music-btn:hover{background:#fff;box-shadow:0 4px 16px rgba(0,0,0,0.18)}
 .music-btn.off{opacity:.5}
 /* Intro pages */
@@ -80,7 +80,13 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
   <div class="intro-page p1" id="introP1">
     <h2>祝你生日快乐！</h2>
     <p class="intro-hint">点击继续</p>
+  
+  <div class="intro-page p1 hide" id="introP4">
+    <h2>故事的开始</h2>
+    <div class="collage"><div class="photo-card" style="max-width:299px;margin-top:0px"><img src="media/primary_school/IMG_0166.JPG" loading="lazy"></div><div class="photo-card" style="max-width:253px;margin-top:9px"><img src="media/primary_school/2993ba5f821894fa1e40f29e9c8e9da8.jpg" loading="lazy"></div><div class="photo-card" style="max-width:234px;margin-top:3px"><img src="media/primary_school/IMG_0889.JPG" loading="lazy"></div><div class="photo-card" style="max-width:255px;margin-top:5px"><img src="media/primary_school/IMG_2378.JPG" loading="lazy"></div><div class="photo-card" style="max-width:267px;margin-top:11px"><img src="media/primary_school/IMG_7646.JPG" loading="lazy"></div><div class="photo-card" style="max-width:301px;margin-top:3px"><img src="media/primary_school/IMG_7714.JPG" loading="lazy"></div><div class="photo-card" style="max-width:295px;margin-top:10px"><img src="media/primary_school/IMG_4725.JPG" loading="lazy"></div><div class="photo-card" style="max-width:268px;margin-top:5px"><img src="media/primary_school/3dddbd8a8431100e1b8bc5cd40403772.jpg" loading="lazy"></div><div class="photo-card" style="max-width:294px;margin-top:6px"><img src="media/primary_school/IMG_9452.JPG" loading="lazy"></div><div class="photo-card" style="max-width:297px;margin-top:0px"><img src="media/primary_school/IMG_4450.JPG" loading="lazy"></div></div>
+    <p class="intro-hint">点击进入回忆</p>
   </div>
+</div>
   <div class="intro-page p2 hide" id="introP2">
     <div class="note-text">
       <p>如你所见，这是一个很草率很简陋的电子相册，附带音乐和一些小文字。接下来请沉浸在这场时空之旅吧！</p>
@@ -101,11 +107,6 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
 
 <audio id="bgm" preload="auto"></audio>
 <button class="music-btn" id="musicBtn" title="音乐">🔇</button>
-
-<section class="cover">
-  <h1><em>给我最好的朋友</em><span class="r">19</span>岁的<span class="g">回忆录</span></h1>
-  <p class="sub">一部关于我们的田园手账</p>
-</section>
 
 <div class="torn"></div>
 <div id="content"></div>
@@ -182,6 +183,16 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
   // Dismiss on click or after 1 minute
   document.getElementById('hbSplash').addEventListener('click',function(){
     document.getElementById('hbSplash').classList.add('hide');
+    var bgm=document.getElementById('bgm');
+    bgm.muted=false;bgm.volume=0.35;
+    var p=bgm.play();
+    if(p!==undefined){p.then(function(){
+      document.getElementById('musicBtn').textContent='🔊';
+      document.getElementById('musicBtn').classList.remove('off');
+    }).catch(function(){
+      bgm.muted=true;
+      bgm.play().then(function(){document.getElementById('musicBtn').textContent='🔈'}).catch(function(){})
+    })}
   });
   setTimeout(function(){
     var s=document.getElementById('hbSplash');
@@ -192,7 +203,7 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
 
 // ====== INTRO PAGES ======
 (function(){
-  var pages=['introP1','introP2','introP3'],cur=0;
+  var pages=['introP1','introP2','introP3','introP4'],cur=0;
   document.getElementById('introOverlay').addEventListener('click',function(){
     document.getElementById(pages[cur]).classList.add('hide');
     cur++;
