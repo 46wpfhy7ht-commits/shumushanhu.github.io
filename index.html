@@ -54,12 +54,26 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
 .intro-page.p3 h2{font-family:var(--font);font-size:clamp(30px,4.5vw,50px);color:var(--ink)}
 .intro-hint{position:absolute;bottom:30px;font-family:var(--font);color:var(--ink-light);font-size:13px;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:.4}50%{opacity:.8}}
+/* HAPPY BIRTHDAY splash */
+.hb-splash{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;background:#F5EDE0;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 1s;cursor:pointer}
+.hb-splash.hide{opacity:0;pointer-events:none}
+.hb-line{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:4px 0}
+.hb-letter{width:clamp(54px,9vw,120px);height:auto;transition:opacity .3s}
+.hb-letter.changing{opacity:0}
+.hb-hint{position:absolute;bottom:40px;font-family:var(--font);color:var(--ink-light);font-size:14px;animation:pulse 2s infinite}
+@media(max-width:768px){.hb-letter{width:clamp(42px,7.5vw,75px)}}
 @media(max-width:768px){.intro-page.p1 h2{font-size:clamp(26px,6vw,38px)}.intro-page.p3 h2{font-size:clamp(22px,5vw,34px)}.intro-page.p2 .note-text{font-size:clamp(14px,3vw,17px)}}
-</style>
 </style>
 </head>
 <body>
 <div class="bg-grid"></div>
+
+<!-- ====== HAPPY BIRTHDAY SPLASH ====== -->
+<div class="hb-splash" id="hbSplash">
+  <div class="hb-line" id="hbLine1"></div>
+  <div class="hb-line" id="hbLine2"></div>
+  <p class="hb-hint">点击任意位置继续</p>
+</div>
 
 <!-- ====== INTRO PAGES ====== -->
 <div class="intro-overlay" id="introOverlay">
@@ -108,6 +122,74 @@ section{position:relative;padding:40px 30px 50px;max-width:1100px;margin:0 auto}
 <div class="modal-overlay" id="modal"><span class="modal-close" id="mc">&times;</span><img id="mi" src=""></div>
 
 <script>
+// ====== HAPPY BIRTHDAY SPLASH ======
+(function(){
+  var words=[['H','A','P','P','Y'],['B','I','R','T','H','D','A','Y']];
+  var lines=[document.getElementById('hbLine1'),document.getElementById('hbLine2')];
+
+  // Preload image lists
+  var imgLists={};
+  ['H','A','P','Y','B','I','R','T','D'].forEach(function(l){
+    imgLists[l]=[];
+    for(var i=1;i<=10;i++){imgLists[l].push('assets/letters/'+l+'/南迦素材 ('+i+').png')}
+  });
+
+  // Create imgs
+  var allImgs=[];
+  words.forEach(function(word,li){
+    word.forEach(function(letter,ci){
+      var img=document.createElement('img');
+      img.className='hb-letter';
+      img.src=imgLists[letter][0];
+      img.setAttribute('data-letter',letter);
+      img.setAttribute('data-pos',li+'-'+ci);
+      lines[li].appendChild(img);
+      allImgs.push(img);
+    });
+  });
+
+  // Track which images are currently shown for P and Y
+  var shownIdx={P:[],Y:[]};
+
+  // Cycle each letter with staggered start
+  allImgs.forEach(function(img,i){
+    var letter=img.getAttribute('data-letter');
+    var pool=imgLists[letter];
+    if(!pool||pool.length<2)return;
+    var idx=0;
+    var offset=Math.random()*800;
+    setTimeout(function(){
+      setInterval(function(){
+        var newIdx;
+        if(letter==='P'||letter==='Y'){
+          // Ensure P1!=P2, Y1!=Y2
+          do{newIdx=Math.floor(Math.random()*pool.length)}while(shownIdx[letter].indexOf(newIdx)>=0);
+          shownIdx[letter].push(newIdx);
+          if(shownIdx[letter].length>2)shownIdx[letter].shift();
+        }else{
+          newIdx=(idx+1)%pool.length;
+        }
+        idx=newIdx;
+        img.classList.add('changing');
+        setTimeout(function(){
+          img.src=pool[idx];
+          img.classList.remove('changing');
+        },150);
+      }, 2000+Math.random()*1000);
+    },offset);
+  });
+
+  // Dismiss on click or after 1 minute
+  document.getElementById('hbSplash').addEventListener('click',function(){
+    document.getElementById('hbSplash').classList.add('hide');
+  });
+  setTimeout(function(){
+    var s=document.getElementById('hbSplash');
+    if(s&&!s.classList.contains('hide'))s.classList.add('hide');
+  },60000);
+})();
+
+
 // ====== INTRO PAGES ======
 (function(){
   var pages=['introP1','introP2','introP3'],cur=0;
